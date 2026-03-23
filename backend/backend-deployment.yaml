@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: 889168908024.dkr.ecr.ap-south-1.amazonaws.com/backend:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+        env:
+        - name: PORT
+          value: "5000"
+        - name: MONGODB_URI
+          value: "mongodb://tandelhavu_db_user:Havan%401755@ac-rmvcffp-shard-00-00.7kqkb1a.mongodb.net:27017,ac-rmvcffp-shard-00-01.7kqkb1a.mongodb.net:27017,ac-rmvcffp-shard-00-02.7kqkb1a.mongodb.net:27017/?ssl=true&replicaSet=atlas-wotkzw-shard-0&authSource=admin&appName=Cluster0"
+        - name: JWT_SECRET
+          value: "d3d8c11f7c3c2f1b4a9a08e3e4f7e2c9f1b4a9a08e3e4f7e2c9f1b4a"

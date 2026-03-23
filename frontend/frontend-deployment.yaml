@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: 889168908024.dkr.ecr.ap-south-1.amazonaws.com/frontend:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+        env:
+        - name: API_BASE_URL
+          value: "http://ad12d1cfb996a4aab9880fa3f6a22d2b-1096797181.ap-south-1.elb.amazonaws.com"
+        
