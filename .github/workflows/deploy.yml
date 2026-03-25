@@ -27,15 +27,15 @@ jobs:
 
       - name: Build Backend Image
         run: |
-          docker build --no-cache -t backend:v1 ./backend
-          docker tag backend:v1 889168908024.dkr.ecr.ap-south-1.amazonaws.com/backend:v1
-          docker push 889168908024.dkr.ecr.ap-south-1.amazonaws.com/backend:v1
+          docker build --no-cache -t backend:v2 ./backend
+          docker tag backend:v2 889168908024.dkr.ecr.ap-south-1.amazonaws.com/backend:v2
+          docker push 889168908024.dkr.ecr.ap-south-1.amazonaws.com/backend:v2
 
       - name: Build Frontend Image
         run: |
-          docker build --no-cache --build-arg VITE_API_URL=http://a99740ee92415435f9abe6c44d7a620b-1171611830.ap-south-1.elb.amazonaws.com -t frontend:v1 ./frontend
-          docker tag frontend:v1 889168908024.dkr.ecr.ap-south-1.amazonaws.com/frontend:v1
-          docker push 889168908024.dkr.ecr.ap-south-1.amazonaws.com/frontend:v1
+          docker build --no-cache --build-arg VITE_API_URL=http://a99740ee92415435f9abe6c44d7a620b-1171611830.ap-south-1.elb.amazonaws.com -t frontend:v2 ./frontend
+          docker tag frontend:v2 889168908024.dkr.ecr.ap-south-1.amazonaws.com/frontend:v2
+          docker push 889168908024.dkr.ecr.ap-south-1.amazonaws.com/frontend:v2
 
       - name: Show docker images
         run: |
